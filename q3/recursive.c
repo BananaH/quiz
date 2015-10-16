@@ -20,6 +20,8 @@ TreeNode* append_flatten(TreeNode *head,TreeNode *in){
 }
 
 void post(TreeNode *root){
+	if(!root)
+		return;
 	if(root->right!=NULL){
 		post(root->right);
 	}
@@ -105,7 +107,7 @@ TreeNode* append(TreeNode *head, int input){
 int main(){
 	int a[6] ={4,1,2,3,5,6};
 	TreeNode *tree;
-	for(int i=0;i<6;i++){
+	for(int i=0;i<(int)(sizeof(a)/sizeof(a[0]));i++){
 		tree=append(tree,a[i]);
 	}
 	post(tree);
