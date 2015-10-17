@@ -31,17 +31,7 @@ char smallest_character(char str[], char c){
 	}
 }
 
-int main()
-{
-	char a[size] = {'c','f','j','p','v'};
-	char b[size] = {'c','c','k'};
-	char ans=smallest_character(a,'a');
-	printf("%c\n", ans);
-	ans=smallest_character(a,'c');
-	printf("%c\n", ans);
-	ans=smallest_character(a,'z');
-	printf("%c\n", ans);
-	ans=smallest_character(b,'f');
-	printf("%c\n", ans);
+int main(int argc,char *argv[]){
+	smallest_character(argv[1],argv[2][0]);
     	return 0;
 }
