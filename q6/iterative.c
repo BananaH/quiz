@@ -17,12 +17,24 @@ ListNode *reverseBetween(ListNode *head,int m,int n){
 			ListNode *L2 = L1;
 			for(int j = i;L2!=NULL;L2=L2->next){
 				if(j==n-1&&L2->next!=NULL){
-					ListNode *temp1 = L1->next;
-					ListNode *temp2 = L2->next;
-					L1->next = L2->next;
-					L2->next = temp1;
-					temp1->next = temp2->next;
-					temp2->next = L2;
+					for(int k = 0; k < (j-i)/2;k++){
+						printf("k:%d  L1:%d  L2:%d\n", k,L1->data,L2->data);
+						ListNode *temp1 = L1->next;
+						ListNode *temp2 = L2->next;
+						L1->next = L2->next;
+						L2->next = temp1;
+						temp2 = temp1->next;
+						temp1->next = L1->next->next;
+						L1->next->next = temp2;//swap end
+						L1 = L1->next;
+						if(L1->next == L2)
+							return head;
+						temp1 = L1;
+						while(temp1->next!=L2){
+							temp1 = temp1->next;
+						}
+						L2 = temp1;
+					}
 					return head;
 				}
 				j++;
@@ -50,7 +62,7 @@ int main(){
 	printf("%d\n",temp->data);
 	temp = temp->next;
     }
-    reverseBetween(root->next,2,4);
+    reverseBetween(root->next,2,8);
     temp = root->next;
     for(int i = 0;i<10;i++){
 	printf("%d\n",temp->data);
