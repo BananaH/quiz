@@ -7,8 +7,11 @@ all: $(EXEC)
 iterative: iterative.c
 	$(CC) $(CFLAGS_common) -o $@ $@.c
 
-recursive: recursive.c
-	$(CC) $(CFLAGS_common) -o $@ $@.c
+#recursive: recursive.c
+#	$(CC) $(CFLAGS_common) -o $@ $@.c
+
+run: iterative
+	./$^
 
 clean:
 	$(RM) $(EXEC) *.o perf.*
